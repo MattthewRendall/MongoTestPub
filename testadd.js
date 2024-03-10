@@ -25,6 +25,39 @@ app.get('/', function(req, res) {
   res.send(outstring);
 });
 
+app.post('/register', async (req, res) => {
+  // Extract user's desired userID and password from the request body
+  const { userID, password } = req.body;
+
+  // Connect to the MongoDB Atlas database
+  const client = new MongoClient(uri);
+
+  try {
+    // Connect to the database
+    await client.connect();
+
+    // Access the "goodStuff2" collection
+    const database = client.db('matthewrendallDB');
+    const goodStuffCollection = database.collection('goodStuff2');
+
+    // Create a document with the provided userID and password
+    const credentials = { userID, password };
+
+    // Insert the credentials into the collection
+    const result = await goodStuffCollection.insertOne(credentials);
+
+    // Send a response indicating successful registration
+    res.send('Registration successful');
+  } catch (error) {
+    // Handle any errors that occur during registration
+    console.error('Error during registration:', error);
+    res.status(500).send('Registration failed');
+  } finally {
+    // Close the database connection
+    await client.close();
+  }
+});
+
 app.get('/task1', function(req, res) {
   var outstring = 'Starting Task 1 on date: ' + Date.now();
   res.send(outstring);
