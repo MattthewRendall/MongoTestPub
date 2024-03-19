@@ -56,32 +56,25 @@ app.get('/', function(req, res) {
 });
 
 app.get('/register', function(req, res) {
-  var outstring = '
-<html>
-        <form action = "/register" method = "post">
-            <h1> Register </h1>
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <button type="submit">Login</button>
-        </form>
-</html>
-';
+  var outstring = '<form action = "/register" method = "post">'
+  outstring += '<h1> Register </h1>'
+  outstring += '<input type="text" name="username" placeholder="Username"><br>'
+  outstring += '<input type="password" name="password" placeholder="Password"><br>'
+  outstring += '<button type="submit">Login</button>'
+  outstring += '</form>'
   res.send(outstring);
 });
 
 app.get('/login', function(req, res) {
-  var outstring = '
-<html>
-        <form action = "/register" method = "post">
-            <h1> Login </h1>
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <button type="submit">Login</button>
-        </form>
-</html>
-';
+  var outstring = '<form action = "/register" method = "post">'
+  outstring += '<h1> Register </h1>'
+  outstring += '<input type="text" name="username" placeholder="Username"><br>'
+  outstring += '<input type="password" name="password" placeholder="Password"><br>'
+  outstring += '<button type="submit">Login</button>'
+  outstring += '</form>'
   res.send(outstring);
 });
+  
 
 app.get('/say/:name', function(req, res) {
   res.send('Hello ' + req.params.name + '!');
