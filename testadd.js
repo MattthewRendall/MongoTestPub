@@ -5,8 +5,8 @@ const uri = "mongodb+srv://matthewrendall:Ladiesman217@cluster0.oql8tvl.mongodb.
 // This password is not one I normally use, just for this assignment.
 
 
-const RegisterPage = """
-  <html>
+const RegisterPage = 
+"""<html>
         <form action = "/register" method = "post">
             <h1> Register </h1>
             <input type="text" name="username" placeholder="Username"><br>
@@ -16,8 +16,8 @@ const RegisterPage = """
   </html>
 """
 
-const LoginPage = """
-  <html>
+const LoginPage = 
+"""<html>
         <form action = "/login" method = "post">
             <h1> Login </h1>
             <input type="text" name="username" placeholder="Username"><br>
