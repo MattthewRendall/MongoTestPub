@@ -8,6 +8,7 @@ const uri = "mongodb+srv://matthewrendall:Ladiesman217@cluster0.oql8tvl.mongodb.
 const RegisterPage = """
   <html>
         <form action = "/register" method = "post">
+            <h1> Register </h1>
             <input type="text" name="username" placeholder="Username"><br>
             <input type="password" name="password" placeholder="Password"><br>
             <button type="submit">Login</button>
@@ -18,6 +19,7 @@ const RegisterPage = """
 const LoginPage = """
   <html>
         <form action = "/login" method = "post">
+            <h1> Login </h1>
             <input type="text" name="username" placeholder="Username"><br>
             <input type="password" name="password" placeholder="Password"><br>
             <button type="submit">Login</button>
