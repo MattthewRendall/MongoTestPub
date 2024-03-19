@@ -4,6 +4,27 @@ const { MongoClient } = require("mongodb");
 const uri = "mongodb+srv://matthewrendall:Ladiesman217@cluster0.oql8tvl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 // This password is not one I normally use, just for this assignment.
 
+
+const RegisterPage = """
+  <html>
+        <form action = "/register" method = "post">
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <button type="submit">Login</button>
+        </form>
+  </html>
+"""
+
+const LoginPage = """
+  <html>
+        <form action = "/login" method = "post">
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <button type="submit">Login</button>
+        </form>
+  </html>
+"""
+  
 // --- This is the standard stuff to get it to work on the browser
 const express = require('express');
 const app = express();
@@ -20,14 +41,10 @@ app.use(express.urlencoded({ extended: true }));
 // Provides a selection of routes to go to as links.
 app.get('/', function(req, res) {
   var outstring = 'Default endpoint starting on date: ' + Date.now();
-  outstring += '<p><a href=\"./task1\">Go to Task 1</a>';
-  outstring += '<p><a href=\"./task2\">Go to Task 2</a>';
+  outstring += '<p><a href=\"./register\">Go to Register</a>';
+  outstring += '<p><a href=\"./login\">Go to Login</a>';
   res.send(outstring);
 });
-
-app.post('/register', async (req, res) => {
-  // Extract user's desired userID and password from the request body
-  const { userID, password } = req.body;
 
   // Connect to the MongoDB Atlas database
   const client = new MongoClient(uri);
@@ -58,13 +75,13 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.get('/task1', function(req, res) {
-  var outstring = 'Starting Task 1 on date: ' + Date.now();
+app.get('/register', function(req, res) {
+  var outstring = RegisterPage
   res.send(outstring);
 });
 
-app.get('/task2', function(req, res) {
-  var outstring = 'Starting Task 2 on date: ' + Date.now();
+app.get('/login', function(req, res) {
+  var outstring = LoginPage
   res.send(outstring);
 });
 
