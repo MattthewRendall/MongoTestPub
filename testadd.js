@@ -5,7 +5,7 @@ const uri = "mongodb+srv://matthewrendall:Ladiesman217@cluster0.oql8tvl.mongodb.
 // This password is not one I normally use, just for this assignment.
 
 
-const RegisterPage = '
+const RegisterPage = `
 <html>
         <form action = "/register" method = "post">
             <h1> Register </h1>
@@ -14,9 +14,9 @@ const RegisterPage = '
             <button type="submit">Login</button>
         </form>
 </html>
-';
+`;
 
-const LoginPage = '
+const LoginPage = `
 <html>
         <form action = "/login" method = "post">
             <h1> Login </h1>
@@ -25,7 +25,7 @@ const LoginPage = '
             <button type="submit">Login</button>
         </form>
 </html>
-';
+`;
   
 // --- This is the standard stuff to get it to work on the browser
 const express = require('express');
