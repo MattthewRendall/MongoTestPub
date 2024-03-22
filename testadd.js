@@ -92,7 +92,9 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
         res.cookie('user', username, { maxAge: 900000, httpOnly: true });
         res.send('Login successful!');
       } else {
-        res.send('Invalid username or password. <a href="/login">Go back to login page</a>');
+        res.send('Invalid username or password. ' +
+                 '<a href="/login">Back to Login page?</a> ' +
+                 '<a href="/register">Need to Register? Click here.</a>');
       }
     } finally {
       await client.close();
