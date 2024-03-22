@@ -74,9 +74,32 @@ app.get('/login', function(req, res) {
 });
 
 app.all("/loginforthewin", function (req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
+
   const client = new MongoClient(uri);
-  databaseString = "<p>You are login! ya win</p>";
-  res.send(databaseString);
+
+  async function run() {
+    try {
+      await client.connect();
+      const database = client.db("matthewrendallDB");
+      const usersCollection = database.collection("goodstuff2");
+
+      const user = await usersCollection.findOne({ username: username, password: password });
+
+      if (user) {
+        // If user exists, set a cookie indicating successful login
+        res.cookie('user', username, { maxAge: 900000, httpOnly: true });
+        res.send('Login successful!');
+      } else {
+        res.send('Invalid username or password.');
+      }
+    } finally {
+      await client.close();
+    }
+  }
+
+  run().catch(console.dir);
 });
 
 
