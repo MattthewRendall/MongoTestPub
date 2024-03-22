@@ -38,7 +38,7 @@ app.get('/register', function(req, res) {
 
 app.all("/youregisteredyaheardme", function (req, res) {
   const client = new MongoClient(uri);
-  databaseString = "<p>You are on insertDb page</p>";
+  databaseString = "<p>You are registered! ya feel me.</p>";
   res.send(databaseString);
   const username = req.body.username;
   const password = req.body.password;
