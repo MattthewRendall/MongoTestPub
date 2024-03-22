@@ -83,7 +83,7 @@ app.all("/loginforthewin", function (req, res) {
     try {
       await client.connect();
       const database = client.db("matthewrendallDB");
-      const usersCollection = database.collection("goodstuff2");
+      const usersCollection = database.collection("goodStuff2");
 
       const user = await usersCollection.findOne({ username: username, password: password });
 
