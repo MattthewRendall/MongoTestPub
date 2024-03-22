@@ -64,7 +64,7 @@ app.all("/youregisteredyaheardme", function (req, res) {
 });
 
 app.get('/login', function(req, res) {
-  var outstring = '<form action = "/register" method = "post">';
+  var outstring = '<form action = "/loginforthewin" method = "post">';
   outstring += '<h1> Login </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
   outstring += '<input type="password" name="password" placeholder="Password"><br>';
@@ -72,6 +72,11 @@ app.get('/login', function(req, res) {
   outstring += '</form>';
   res.send(outstring);
 });
+
+app.all("/loginforthewin", function (req, res) {
+  const client = new MongoClient(uri);
+  databaseString = "<p>You are login! ya win</p>";
+  res.send(databaseString);
   
 
 app.get('/say/:name', function(req, res) {
