@@ -27,13 +27,40 @@ app.get('/', function(req, res) {
 });
 
 app.get('/register', function(req, res) {
-  var outstring = '<form action = "/register" method = "post">';
+  var outstring = '<form action = "/youregisteredyaheardme" method = "post">';
   outstring += '<h1> Register </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
   outstring += '<input type="password" name="password" placeholder="Password"><br>';
   outstring += '<button type="submit">Login</button>';
   outstring += '</form>';
   res.send(outstring);
+});
+
+app.all("/youregisteredyaheardme", function (req, res) {
+  const client = new MongoClient(uri);
+  databaseString = "<p>You are on insertDb page</p>";
+  res.send(databaseString);
+  const username = req.body.username;
+  const password = req.body.password;
+
+  async function run() {
+    try {
+      await client.connect();
+      const database = client.db("matthewrendallDB");
+      const parts = database.collection("goodStuff2");
+
+      const doc = {
+        username: username,
+        password: password,
+      };
+
+      await parts.insertOne(doc);
+    } finally {
+      await client.close();
+    }
+  }
+
+  run().catch(console.dir);
 });
 
 app.get('/login', function(req, res) {
@@ -55,6 +82,7 @@ app.get('/say/:name', function(req, res) {
 // Access Example-1
 // Route to access database using a parameter:
 // access as ...app.github.dev/api/mongo/9876
+
 app.get('/api/mongo/:item', function(req, res) {
 const client = new MongoClient(uri);
 
