@@ -64,7 +64,7 @@ app.all("/youregisteredyaheardme", function (req, res) {
 });
 
 app.get('/login', function(req, res) {
-  var outstring = '<form action = "/loginforthewin" method = "post">';
+  var outstring = '<form action = "/loginareyoufriendorfoe" method = "post">';
   outstring += '<h1> Login </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
   outstring += '<input type="password" name="password" placeholder="Password"><br>';
@@ -73,7 +73,7 @@ app.get('/login', function(req, res) {
   res.send(outstring);
 });
 
-app.all("/loginforthewin", function (req, res) {
+app.all("/loginareyoufriendorfoe", function (req, res) {
   const username = req.body.username;
   const password = req.body.password;
 
