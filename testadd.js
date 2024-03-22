@@ -73,11 +73,6 @@ app.get('/login', function(req, res) {
   res.send(outstring);
 });
 
-app.all("/loginforthewin", function (req, res) {
-  const client = new MongoClient(uri);
-  databaseString = "<p>You are login! ya win</p>";
-  res.send(databaseString);
-  
 
 app.get('/say/:name', function(req, res) {
   res.send('Hello ' + req.params.name + '!');
