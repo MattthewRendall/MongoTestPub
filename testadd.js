@@ -38,7 +38,7 @@ app.get('/register', function(req, res) {
 
 app.get('/login', function(req, res) {
   var outstring = '<form action = "/register" method = "post">';
-  outstring += '<h1> Register </h1>';
+  outstring += '<h1> Login </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
   outstring += '<input type="password" name="password" placeholder="Password"><br>';
   outstring += '<button type="submit">Login</button>';
