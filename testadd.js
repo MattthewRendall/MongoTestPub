@@ -32,7 +32,7 @@ app.get('/register', function(req, res) {
   outstring += '<h1> Register </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
   outstring += '<input type="password" name="password" placeholder="Password"><br>';
-  outstring += '<button type="submit">Login</button>';
+  outstring += '<button type="submit">Register</button>';
   outstring += '</form>';
   res.send(outstring);
 });
