@@ -88,8 +88,8 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
       const user = await usersCollection.findOne({ username: username, password: password });
 
       if (user) {
-        // If user exists, set a cookie indicating successful login
-        res.cookie('user', username, { maxAge: 900000, httpOnly: true });
+        
+        res.cookie('user', username, { maxAge: 600000, httpOnly: true });
         res.send('Login successful!');
       } else {
         res.send('Invalid username or password.');
@@ -100,6 +100,22 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
   }
 
   run().catch(console.dir);
+});
+
+// Route for displaying all current cookies
+app.get('/cookiemonster', function(req, res) {
+  // Retrieve all cookies from the request object
+  const cookies = req.cookies;
+  
+  // Generate a string to display all current cookies
+  let cookieList = '<h1>All Current Cookies</h1><ul>';
+  for (const [cookieName, cookieValue] of Object.entries(cookies)) {
+    cookieList += `<li>${cookieName}: ${cookieValue}</li>`;
+  }
+  cookieList += '</ul>';
+
+  // Send the response with the list of current cookies
+  res.send(cookieList);
 });
 
 
