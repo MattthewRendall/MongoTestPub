@@ -110,16 +110,12 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
 
 app.get('/cookiemonster', function(req, res) {
   mycookies = req.cookies;
-  
-  //let cookieList = '<h1>All Current Cookies</h1><ul>';
-  // for (const [cookieName, cookieValue] of Object.entries(cookies)) {
-  //   cookieList += `<li>${cookieName}: ${cookieValue}</li>`;
-  // }
-  // cookieList += '</ul>';
-
   res.send(mycookies);
+});
 
-  
+app.get('/clearcookie', function (req, res) {
+  res.clearCookie('user');
+  res.send('your Cookie is cooked, deleted i mean.');
 });
 
 
