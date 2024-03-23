@@ -102,20 +102,16 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
   run().catch(console.dir);
 });
 
-// Route for displaying all current cookies
 app.get('/cookiemonster', function(req, res) {
-  // Retrieve all cookies from the request object
-  const cookies = req.cookies;
+  const mycookies = req.cookies;
   
-  // Generate a string to display all current cookies
-  let cookieList = '<h1>All Current Cookies</h1><ul>';
-  for (const [cookieName, cookieValue] of Object.entries(cookies)) {
-    cookieList += `<li>${cookieName}: ${cookieValue}</li>`;
-  }
-  cookieList += '</ul>';
+  //let cookieList = '<h1>All Current Cookies</h1><ul>';
+  // for (const [cookieName, cookieValue] of Object.entries(cookies)) {
+  //   cookieList += `<li>${cookieName}: ${cookieValue}</li>`;
+  // }
+  // cookieList += '</ul>';
 
-  // Send the response with the list of current cookies
-  res.send(cookieList);
+  res.send(mycookies);
 });
 
 
