@@ -22,8 +22,7 @@ app.use(cookieParser());
 // Default route.
 // Provides a selection of routes to go to as links.
 app.get('/', function(req, res) {
-  var outstring = 'Default endpoint starting on date: ' + Date.now();
-  outstring += '<p><a href=\"./register\">Go to Register</a>';
+  var outstring = '<p><a href=\"./register\">Go to Register</a>';
   outstring += '<p><a href=\"./login\">Go to Login</a>';
   res.send(outstring);
 });
@@ -40,7 +39,7 @@ app.get('/register', function(req, res) {
 
 app.all("/youregisteredyaheardme", function (req, res) {
   const client = new MongoClient(uri);
-  databaseString = "<p>You are registered! ya feel me.</p>";
+  databaseString = "<p>You are registered!</p>";
   res.send(databaseString);
   const username = req.body.username;
   const password = req.body.password;
