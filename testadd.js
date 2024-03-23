@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
   res.send(outstring);
 });
 
-app.get('/register', function(req, res) {
+app.get('/register', function(req, res) {  //T2-Registering
   var outstring = '<form action = "/youregisteredyaheardme" method = "post">';
   outstring += '<h1> Register </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
@@ -37,7 +37,7 @@ app.get('/register', function(req, res) {
   res.send(outstring);
 });
 
-app.all("/youregisteredyaheardme", function (req, res) {
+app.all("/youregisteredyaheardme", function (req, res) { //T2-Registering
   const client = new MongoClient(uri);
   databaseString = "<p>You are registered!</p>";
   res.send(databaseString);
@@ -64,7 +64,7 @@ app.all("/youregisteredyaheardme", function (req, res) {
   run().catch(console.dir);
 });
 
-app.get('/login', function(req, res) {
+app.get('/login', function(req, res) {  //T3-Login
   var outstring = '<form action = "/loginareyoufriendorfoe" method = "post">';
   outstring += '<h1> Login </h1>';
   outstring += '<input type="text" name="username" placeholder="Username"><br>';
@@ -90,10 +90,10 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
 
       if (user) {
         
-        res.cookie('user', username, { maxAge: 600000, httpOnly: true });
+        res.cookie('user', username, { maxAge: 600000, httpOnly: true });  //T3.2 Successful Login
         res.send('Login successful!');
       } else {
-        res.send('Invalid username or password. ' +
+        res.send('Invalid username or password. ' +  //T3.1 Unsuccessfull Login
                  '<br>' +
                  '<a href="/login">Back to Login page?</a> ' +
                  '<br>' +
@@ -107,12 +107,12 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
   run().catch(console.dir);
 });
 
-app.get('/cookiemonster', function(req, res) {
+app.get('/cookiemonster', function(req, res) {  //T4- Cookies
   mycookies = req.cookies;
   res.send(mycookies);
 });
 
-app.get('/clearcookiegobbler', function (req, res) {
+app.get('/clearcookiegobbler', function (req, res) { //T5 - Clear Cookies
   res.clearCookie('user');
   res.send('Your Cookies are Deleted');
 });
@@ -122,6 +122,9 @@ app.get('/clearcookiegobbler', function (req, res) {
 app.get('/say/:name', function(req, res) {
   res.send('Hello ' + req.params.name + '!');
 });
+
+// Passed this point I dont believe the remaining code is necessary, but i left it, does no harm.
+
 
 
 // Access Example-1
