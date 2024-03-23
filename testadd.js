@@ -1,4 +1,5 @@
 const { MongoClient } = require("mongodb");
+var cookieParser = require('cookie-parser');
 
 // The uri string must be the connection string for the database (obtained on Atlas).
 const uri = "mongodb+srv://matthewrendall:Ladiesman217@cluster0.oql8tvl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -14,6 +15,7 @@ console.log('Server started at http://localhost:' + port);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // routes will go here
 
@@ -107,7 +109,7 @@ app.all("/loginareyoufriendorfoe", function (req, res) {
 });
 
 app.get('/cookiemonster', function(req, res) {
-  const mycookies = req.cookies;
+  mycookies = req.cookies;
   
   //let cookieList = '<h1>All Current Cookies</h1><ul>';
   // for (const [cookieName, cookieValue] of Object.entries(cookies)) {
@@ -116,7 +118,10 @@ app.get('/cookiemonster', function(req, res) {
   // cookieList += '</ul>';
 
   res.send(mycookies);
+
+  
 });
+
 
 
 app.get('/say/:name', function(req, res) {
