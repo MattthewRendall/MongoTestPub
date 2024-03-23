@@ -113,9 +113,9 @@ app.get('/cookiemonster', function(req, res) {
   res.send(mycookies);
 });
 
-app.get('/clearcookie', function (req, res) {
+app.get('/clearcookiegobbler', function (req, res) {
   res.clearCookie('user');
-  res.send('your Cookie is cooked, deleted i mean.');
+  res.send('Your Cookie is deleted');
 });
 
 
